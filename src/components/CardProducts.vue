@@ -8,7 +8,7 @@
           <p class="card-text"> {{ product.price }}</p>
           <p class="card-text"><small class="text-muted">{{ product.stock }}</small></p>
           <div class="text-center justify-content-center align-items-center d-flex">
-            <button class="btn btn-success">Add to Cart</button>
+            <button @click.prevent="addToCart" class="btn btn-success">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -19,7 +19,21 @@
 <script>
 export default {
   name: 'CardProducts',
-  props: ['product']
+  props: ['product'],
+  methods: {
+    addToCart () {
+      const payload = {
+        productId: this.product.id,
+        price: this.product.price,
+        name: this.product.name
+        // quantity: this.product.quantity
+      }
+      console.log('<<<< masuk add to cart')
+      this.$store.dispatch('addToCart', payload)
+      
+      // this.$router.push('/carts')
+    }
+  }
 }
 </script>
 

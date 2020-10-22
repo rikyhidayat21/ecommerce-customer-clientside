@@ -3,7 +3,7 @@
     <div class="container" id="login-page">
       <div class="row mt-4 mb-4">
         <div class="col-md-8" style="background-color: #0f4c75;">
-          <img src="" class="rounded mx-auto d-block" style="width: 80%;" alt="">
+          <img src="../assets/undraw_junior_soccer_6sop.svg" class="rounded mx-auto d-block" style="width: 80%;" alt="">
         </div>
         <div class="col-4" style="background-color: #dddddd;">
           <!-- <div class="card">
@@ -72,6 +72,12 @@ export default {
           })
         })
         .catch(err => {
+          Swal.fire({
+            title: 'Error!',
+            text: err.response.data.errors,
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          })
           console.log(err, '<==== error login')
         })
     },
